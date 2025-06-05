@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsEye } from "react-icons/bs";
-import { register } from "../api/authAPI";
+import { logOut, register } from "../api/authAPI";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -52,6 +52,19 @@ const SignupForm: React.FC = () => {
     setShowPassConfirmation((prev) => !prev);
   };
 
+  useEffect(() => {
+      const handleLogin = async () => {
+        if (
+          window.location.pathname === "/" ||
+          window.location.pathname === "/login" ||
+          window.location.pathname === "/sign-up" ||
+          window.location.pathname === "/forget-pass"
+        ) {
+          await logOut();
+        }
+      };
+      handleLogin();
+    }, []);
   if (error) {
     return <p className="text-red-400">{error}</p>;
   }

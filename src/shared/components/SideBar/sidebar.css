@@ -1,0 +1,24 @@
+aside {
+  border: none !important;
+}
+
+aside > div {
+  background-color: black !important;
+  border-radius: 0.8rem;
+  -webkit-border-radius: 0.8rem;
+  -moz-border-radius: 0.8rem;
+  -ms-border-radius: 0.8rem;
+  -o-border-radius: 0.8rem;
+}
+aside.ps-collapsed .ps-sidebar-container nav .ps-menu-button {
+  padding: 0;
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+}
+aside.ps-collapsed .ps-sidebar-container nav .ps-menu-button .ps-menu-icon {
+  margin: auto;
+}
+aside.ps-collapsed .ps-sidebar-container nav .ps-menu-button .ps-menu-label {
+display: none;
+}

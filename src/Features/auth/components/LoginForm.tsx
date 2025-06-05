@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsEye } from "react-icons/bs";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { login } from "../api/authAPI";
+import { login, logOut } from "../api/authAPI";
 
 const LoginForm: React.FC = () => {
   const [showPass, setShowPass] = useState<boolean>(false);
@@ -27,7 +27,7 @@ const LoginForm: React.FC = () => {
       setError("");
       setLoading(true);
       await login(email, password);
-      navigate(redirectPath, {replace: true});
+      navigate(redirectPath, { replace: true });
       toast.success("You are Logged in Successfully");
     } catch (error) {
       if (error instanceof Error) {
@@ -43,6 +43,19 @@ const LoginForm: React.FC = () => {
   const handleShowPass = () => {
     setShowPass((prev) => !prev);
   };
+  useEffect(() => {
+    const handleLogin = async () => {
+      if (
+        window.location.pathname === "/" ||
+        window.location.pathname === "/login" ||
+        window.location.pathname === "/sign-up" ||
+        window.location.pathname === "/forget-pass"
+      ) {
+        await logOut();
+      }
+    };
+    handleLogin();
+  }, []);
 
   if (error) {
     return <p className="text-red-400">{error}</p>;

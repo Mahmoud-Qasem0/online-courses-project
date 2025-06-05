@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { resetPassword } from "../api/authAPI";
+import { logOut, resetPassword } from "../api/authAPI";
 
 const ForgetPasswordForm: React.FC = () => {
   const [error, setError] = useState<string>("");
@@ -33,6 +33,19 @@ const ForgetPasswordForm: React.FC = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+      const handleLogin = async () => {
+        if (
+          window.location.pathname === "/" ||
+          window.location.pathname === "/login" ||
+          window.location.pathname === "/sign-up" ||
+          window.location.pathname === "/forget-pass"
+        ) {
+          await logOut();
+        }
+      };
+      handleLogin();
+    }, []);
   if (error) {
     return <p className="text-red-400">{error}</p>;
   }

@@ -14,8 +14,8 @@ const ProtectRoute: React.FC<Props> = ({ children }) => {
   if (loading) {
     return <Loading />;
   }
-  if (!user) {
-    <Navigate to="/login" state={{ path: location.pathname }} />;
+  if (user === null) {
+    return <Navigate to="/login" state={{ path: location.pathname }} />;
   }
   return <>{children}</>;
 };
