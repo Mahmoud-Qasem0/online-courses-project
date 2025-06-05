@@ -110,11 +110,11 @@ const SideBar: FC<IProps> = ({ collapsed, setCollapsed }): JSX.Element => {
             },
           }}>
           {sidebarItems.map((item, i) => (
-            <MenuItem key={i} component={item.component} icon={item.icon}>
+            <MenuItem key={i} component={item.component} icon={item.icon} title={item.title}>
               <span className="hidden md:inline-block ">{item.title}</span>
             </MenuItem>
           ))}
-          <MenuItem onClick={handleLogOut} icon={<TbLogout size={30} />}>
+          <MenuItem onClick={handleLogOut} icon={<TbLogout size={30} />} title="Log Out">
             <span className={`hidden md:inline-block`}>Log Out</span>
           </MenuItem>
         </Menu>
