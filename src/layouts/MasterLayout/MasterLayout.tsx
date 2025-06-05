@@ -3,12 +3,13 @@ import { Outlet } from "react-router-dom";
 import SideBar from "../../shared/components/SideBar/SideBar";
 import Navbar from "../../shared/components/NavBar/Navbar";
 import CoursesCounter from "../../Features/dashboard/components/CoursesCounter/CoursesCounter";
+import YourTasks from "../../Features/dashboard/components/YourTasks/YourTasks";
 const MasterLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(true);
   return (
     <>
       <div className="flex">
-        <div>
+        <div className="h-screen">
           <SideBar collapsed={collapsed} setCollapsed={setCollapsed} />
         </div>
         <div className="grow justify-around">
@@ -24,7 +25,9 @@ const MasterLayout: React.FC = () => {
                 <Navbar />
               </div>
               <CoursesCounter />
-              <p>sddfsa</p>
+              <section className="mt-10 mb-5 text-center">
+                <YourTasks />
+              </section>
             </div>
           </div>
         </div>
