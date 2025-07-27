@@ -1,5 +1,6 @@
 import {FC, JSX} from 'react';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
+import Calender from '../../components/Calender/Calender';
 
 const Discussions: FC = (): JSX.Element => {
   return (
@@ -8,6 +9,7 @@ const Discussions: FC = (): JSX.Element => {
         <div className="flex items-center justify-center mb-4">
           <SectionTitle title="Discussions" />
         </div>
+          <Calender />
       </section>
     </>
   )
